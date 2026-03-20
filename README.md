@@ -135,24 +135,15 @@ Application.h
 
 Look at the `main()` function.
 
-The simulation runs in **synchronous periods**, controlled by the variable:
-
-```
-globaltime
-```
+The simulation runs in **synchronous periods**, controlled by the variable: `globaltime`
 
 During each period:
 
 - Some peers may **start**
 - Some peers may **crash-stop**
 
-For every peer that is alive, the function:
+For every peer that is alive, the function: `nodeLoop()` is called.
 
-```
-nodeLoop()
-```
-
-is called.
 
 `nodeLoop()` is implemented in the **P2P layer (`MP1Node.cpp`)**.
 
@@ -191,11 +182,7 @@ This layer could eventually support distributed system operations such as:
 
 # 3. What Does the Code Do Currently?
 
-Currently the code prints debugging messages into:
-
-```
-dbg.log
-```
+Currently the code prints debugging messages into: `dbg.log`
 
 Format:
 
@@ -209,11 +196,7 @@ Debugging can be enabled or disabled by commenting/uncommenting:
 #define DEBUGLOG
 ```
 
-in:
-
-```
-stdincludes.h
-```
+in the header file: `stdincludes.h`
 
 Two message types currently exist in the P2P layer:
 
@@ -225,13 +208,8 @@ Two message types currently exist in the P2P layer:
 - `JOINREQ` messages are received by the **introducer**.
 - The **introducer** is the **first peer to join the system**.
 
-For Linux systems this is typically:
 
-```
-1.0.0.0:0
-```
-
-due to **big-endianness**.
+For Linux systems this is typically: `1.0.0.0:0` due to **big-endianness**.
 
 A good starting point is to implement **JOINREP responses** from the introducer.
 
@@ -299,11 +277,7 @@ struct member
 enum MsgTypes
 ```
 
-in:
-
-```
-Mp1Node.h
-```
+in: `Mp1Node.h`
 
 New message types should be processed using functions similar to those used for `JOINREQ` and `JOINREP`.
 
@@ -348,11 +322,7 @@ The grader will check these entries.
 
 ### Params.cpp / Params.h
 
-Contains:
-
-```
-setparams()
-```
+Contains: `setparams()`
 
 This initializes parameters such as:
 
@@ -432,10 +402,9 @@ Parameter meanings:
 
 ## Grader Script
 
-Script:
-
+Script for grading is: 
 ```
-Grader.sh
+./Grader.sh
 ```
 
 It evaluates three scenarios:
@@ -450,23 +419,13 @@ Metrics tested:
 2. Failed nodes are detected (**completeness**)
 3. Correct node is identified as failed (**accuracy**)
 
-Test configurations are stored in the:
-
-```
-testcases/
-```
-
-directory.
+Test configurations are stored in the: `testcases/` directory.
 
 ---
 
 ## 6.2 Grading
 
-Total points:
-
-```
-90 points
-```
+Total points: `90 points`
 
 The grader reports how many points your implementation receives.
 
